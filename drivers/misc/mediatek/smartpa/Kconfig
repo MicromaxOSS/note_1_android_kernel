@@ -1,0 +1,30 @@
+config MTK_SMARTPA_SOUND
+	bool "MTK sound for external I2C driver"
+	default n
+	help
+	  If you say Y, enable mtk audio i2c driver to control
+	  external device for example:smartpa device.
+
+# begin, prize-lifenfen-20181213, add for smartpa awinic aw8898
+config SND_SMARTPA_NXP
+	bool "MTK sound for external I2C driver"
+	default n
+	help
+	  If you say Y, enable mtk audio i2c driver to control
+	  external device for example:smartpa device.
+
+config SND_SMARTPA_AW8898
+	tristate "SoC Audio for awinic aw8898 series"
+	depends on I2C
+	default n
+	help
+	  This option enables support for aw8898 series Smart PA.
+
+config SND_SMARTPA_AW88194A
+	tristate "SoC Audio for awinic aw88194a series"
+	depends on I2C
+	default n
+	help
+	  This option enables support for aw88194a series Smart PA.
+# end, prize-lifenfen-20181213, add for smartpa awinic aw8898
+

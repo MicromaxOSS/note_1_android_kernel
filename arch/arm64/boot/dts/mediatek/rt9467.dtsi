@@ -1,0 +1,34 @@
+/* Please modify i2c bus number according to your platform */
+&i2c7 {
+	rt9467@5b {
+		compatible = "richtek,rt9467";
+		reg = <0x5b>;
+		rt,intr_gpio_num = <20>;	/* direct defined GPIO num */
+		rt,intr_gpio = <&pio 20 0x0>;
+		interrupt-names = "wdtmri", "chg_mivr", "chg_aiclmeasi",
+            "attachi", "detachi", "pwr_rdy", "chg_statci", "chg_ieoci";
+		status = "okay";
+		/*
+		 * Charger name
+		 * Main charger: primary_chg
+		 * Slave charger: secondary_chg
+		 */
+		charger_name = "primary_chg";
+		regmap_name = "rt9467_primary";
+		regmap_represent_slave_addr = <0x5b>;
+		ichg = <2000000>;	/* uA */
+		aicr = <500000>;	/* uA */
+		mivr = <4400000>;	/* uV */
+		cv = <4400000>;		/* uV */
+		ieoc = <250000>;	/* uA */
+		safety_timer = <12>;	/* hour */
+		ircmp_resistor = <100000>;	//  <25000>;	/* uohm ÏßÂ·×è¿¹*/
+		ircmp_vclamp = <32000>;		/* uV µç³ØIR²¹³¥*/
+		en_te;
+		en_wdt;
+		en_chgdet;
+		/* en_jeita; */
+		/* en_irq_pulse; */
+		otgen-gpio = <&pio 57 0x0>;	/* prize liaoxingen add otg 20200903 */
+	};
+};

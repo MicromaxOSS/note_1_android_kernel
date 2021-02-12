@@ -1,0 +1,38 @@
+config PRIZE_LCD_BIAS
+  bool CONFIG_PRIZE_LCD_BIAS
+  default no
+  help
+    CONFIG_PRIZE_LCD_BIAS
+
+# prize-dingjun-20150410-start
+config PRIZE_HALL
+	bool "hall device"
+	default n
+	help
+	  Select Y to enable hall device support
+# prize-dingjun-20150410-end
+
+#prize add by huarui, sos torch , 20200402 start
+config PRIZE_TORCH
+	bool "torch with fun"
+	default n
+	help
+	  Select Y to enable prize torch
+#prize add by huarui, sos torch , 20200402 start
+
+#prize add by huarui, hoperf hp5804 , 20200402 start
+config PRIZE_BAROMETER_H5804
+	bool "water barometer with h5804"
+	default n
+	help
+	  Select Y to enable water barometer
+#prize add by huarui, hoperf hp5804 , 20200402 start
+
+#prize add by huangjiwu, fm ant , 20200720 start
+config PRIZE_FM_ANT_SWITCH
+	bool "fm ant switch fun"
+	default n
+	help
+	  Select Y to enable prize fm ant switch fun
+#prize add by huarui, fm ant switch , 20200720 start
+
