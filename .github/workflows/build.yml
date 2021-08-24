@@ -1,0 +1,40 @@
+name: Build on Tag
+
+on:
+  push:
+    tags: 'v*'
+    
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout kernel source
+      uses: actions/checkout@v2
+
+    - name: Checkout zipper
+      uses: actions/checkout@v2
+      with:
+        repository: nit-in/AnyKernel3
+        path: zipper
+
+    - name: Android kernel build
+      uses: nit-in/android-kernel-actions@master
+      id: build
+      env:
+        NAME: Micromax_IN_1
+      with:
+        arch: arm64
+        compiler: aosp-clang/android10-release/clang-r353983c
+        defconfig: e4676_defconfig
+        image: Image.gz-dtb
+
+    - name: Release build
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "/home/runner/work/In_1_android_kernel/In_1_android_kernel/zipper/*.zip,
+        /home/runner/work/In_1_android_kernel/In_1_android_kernel/out/arch/arm64/boot/Image.gz-dtb,
+        /home/runner/work/In_1_android_kernel/In_1_android_kernel/out/arch/arm64/boot/Image.gz,
+        /home/runner/work/In_1_android_kernel/In_1_android_kernel/out/arch/arm64/boot/Image"
+        token: ${{ secrets.KERNEL }}
